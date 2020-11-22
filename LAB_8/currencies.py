@@ -34,23 +34,20 @@ import json
 
 
 def main():
+    # a loop to ask user to input data the code and amount of $ they want to convert into
     while True:
         currency_code = input('What currency code are you trying to convert? ')
         dollar_amount = int(input('How many dollars do you want to convert? '))
         rates = get_exchange_rates().get('rates')
-
+        # testing to block error code for loop to go through,for inputs put in by user for what they want to convert too
         try:
             receive_value = rates[currency_code.upper()]
-            final_convert = dollar_amount * receive_value
-            rounded_conversion = round(final_convert, 2)
+            final_conversion = dollar_amount * receive_value
+            rounded_conversion = round(final_conversion, 2)
             print(f'Currency equivalence: {rounded_conversion} {currency_code.upper()}')
             break
         except KeyError:
             print('Invalid currency code. Try again.')
-
-
-
-
 
 # You do not need to modify any code below here.
 
